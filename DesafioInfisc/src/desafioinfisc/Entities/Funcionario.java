@@ -10,7 +10,10 @@ package desafioinfisc.Entities;
  * @author Arthur
  */
 public class Funcionario {
-
+    
+    public Funcionario(){
+    }
+    
     public Funcionario(long id, String nome) {
         this.id = id;
         this.nome = nome;
@@ -24,13 +27,23 @@ public class Funcionario {
     private long id;
     
     private String nome;
-
+    
+    private int totalHorasAtendimento;
+    
     public long getId() {
         return id;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public int getTotalHorasAtendimento() {
+        return totalHorasAtendimento;
+    }
+
+    public void setTotalHorasAtendimento(int totalHorasAtendimento) {
+        this.totalHorasAtendimento = totalHorasAtendimento;
     }
     
     @Override

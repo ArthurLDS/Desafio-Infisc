@@ -24,13 +24,23 @@ public class Cliente {
     private long id;
     
     private String nome;
-
+    
+    private int totalHorasAtendimento;
+    
     public long getId() {
         return id;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public int getTotalHorasAtendimento() {
+        return totalHorasAtendimento;
+    }
+
+    public void setTotalHorasAtendimento(int totalHorasAtendimento) {
+        this.totalHorasAtendimento = totalHorasAtendimento;
     }
     
     @Override
