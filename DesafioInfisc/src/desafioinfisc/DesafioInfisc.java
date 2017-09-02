@@ -7,6 +7,7 @@ package desafioinfisc;
 
 import desafioinfisc.Entities.Atendimento;
 import desafioinfisc.Entities.Cliente;
+import desafioinfisc.Entities.Funcionario;
 import desafioinfisc.Service.AtendimentoService;
 import desafioinfisc.Service.ClienteService;
 import desafioinfisc.Service.FuncionarioService;
@@ -27,7 +28,7 @@ import java.util.stream.Stream;
 public class DesafioInfisc {
     
     public static void main(String[] args) {
-        /* // Teste Funcionarios
+        // Teste Funcionarios
         FuncionarioService funcionarioService = new FuncionarioService(getFileLines());
         List<Funcionario> funcionarios = funcionarioService.getFuncionarios();
        
@@ -35,14 +36,14 @@ public class DesafioInfisc {
         System.out.println("QUANTIDADE DE FUNCONARIOS: " + funcionarioService.getQuantidadeFuncionarios());
         System.out.println("FUNCIONARIO PESQUISADO: " + funcionarioService.findFuncionarioById(1));
         
-        // Teste Clientes*/
+        // Teste Clientes
         ClienteService clienteService = new ClienteService(getFileLines());
-        /*List<Cliente> clientes = clienteService.getClientes();
+        List<Cliente> clientes = clienteService.getClientes();
         
         clientes.forEach(System.out::println);
         System.out.println("QUANTIDADE DE CLIENTES: " + clienteService.getQuantidadeFuncionarios());
         System.out.println("CLIENTE PESQUISADO: " + clienteService.findClienteById(1));
-        */
+        
         
         AtendimentoService atendimentoService = new AtendimentoService(getFileLines());
         List<Atendimento> atendimentos = atendimentoService.getAtendimentos();
@@ -52,6 +53,11 @@ public class DesafioInfisc {
         Cliente cliente = clienteService.findClienteById(1);
         System.out.println("CLIENTE: " + cliente);
         System.out.println("TOTAL DE SUAS HORAS: " + atendimentoService.getTotalHorasRealizadasByCliente(cliente));
+        
+        System.out.println("NUMERO DE ATENDIMENTOS: " + atendimentoService.getQuantidadeAtendimentos());
+        
+        System.out.println("FUNCIONARIO COM MAIS HORAS: " + atendimentoService.getFuncionarioComMaiorQntHorasAtendimento());
+        System.out.println("CLIENTE COM MAIS HORAS: " + atendimentoService.getClienteComMaiorQntHorasAtendimento());
     } 
     
     public static List<String> getFileLines(){

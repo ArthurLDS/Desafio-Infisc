@@ -29,10 +29,16 @@ public class AtendimentoService {
         this.funcionarioService = new FuncionarioService(fileLines);
         this.clienteService = new ClienteService(fileLines);
         this.atendimentos = getAllAtendimentos(fileLines);
+        setAllTotalHorasAtendimentoFuncionarios();
+        setAllTotalHorasAtendimentoClientes();
     }
 
     public List<Atendimento> getAtendimentos() {
         return atendimentos;
+    }
+    
+    public Integer getQuantidadeAtendimentos(){
+        return this.atendimentos.size();
     }
     
     public Integer getTotalHorasAtendimento(){
@@ -47,10 +53,29 @@ public class AtendimentoService {
         return this.atendimentos.stream().filter(a -> a.getFuncionario().getId() == funcionario.getId()).mapToInt(a -> a.getDuracaoHoras()).sum();
     }
     
+    public Funcionario getFuncionarioComMaiorQntHorasAtendimento(){
+        return funcionarioService.getFuncionarios().stream()
+                .max((f1, f2) -> Integer.compare(f1.getTotalHorasAtendimento(), f2.getTotalHorasAtendimento())).get();
+    }
+    
+    public Cliente getClienteComMaiorQntHorasAtendimento(){
+        return clienteService.getClientes().stream()
+                .max((c1, c2) -> Integer.compare(c1.getTotalHorasAtendimento(), c2.getTotalHorasAtendimento())).get();
+    }
+    
     // ---- Private methods ----
+    private void setAllTotalHorasAtendimentoFuncionarios(){
+        funcionarioService.getFuncionarios().stream().forEach(f -> f.setTotalHorasAtendimento(
+                this.atendimentos.stream().filter(a -> a.getFuncionario().getId() == f.getId()).mapToInt(a -> a.getDuracaoHoras()).sum()));
+    }
+    
+    private void setAllTotalHorasAtendimentoClientes(){
+        clienteService.getClientes().stream().forEach(c -> c.setTotalHorasAtendimento(
+                this.atendimentos.stream().filter(a -> a.getCliente().getId() == c.getId()).mapToInt(a -> a.getDuracaoHoras()).sum()));
+    }
+    
     private List<Atendimento> getAllAtendimentos(List<String> fileLines){
         List<Atendimento> atendimentos = new ArrayList<>();
-        
         getAtendimentosString(fileLines).forEach(line -> 
             atendimentos.add( 
                 new Atendimento(
@@ -61,7 +86,6 @@ public class AtendimentoService {
                 )
             )            
         );
-        
         return atendimentos;
     }
     
