@@ -19,6 +19,13 @@ public class Atendimento {
     
     private int duracaoHoras;
 
+    public Atendimento(long id, Funcionario funcionario, Cliente cliente, int duracaoHoras) {
+        this.id = id;
+        this.funcionario = funcionario;
+        this.cliente = cliente;
+        this.duracaoHoras = duracaoHoras;
+    }
+    
     public long getId() {
         return id;
     }
