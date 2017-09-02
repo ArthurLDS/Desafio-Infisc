@@ -5,6 +5,9 @@
  */
 package desafioinfisc;
 
+import desafioinfisc.Entities.Atendimento;
+import desafioinfisc.Entities.Cliente;
+import desafioinfisc.Service.AtendimentoService;
 import desafioinfisc.Service.ClienteService;
 import desafioinfisc.Service.FuncionarioService;
 import java.io.BufferedReader;
@@ -24,7 +27,31 @@ import java.util.stream.Stream;
 public class DesafioInfisc {
     
     public static void main(String[] args) {
-       getFileLines().forEach(System.out::println);
+        /* // Teste Funcionarios
+        FuncionarioService funcionarioService = new FuncionarioService(getFileLines());
+        List<Funcionario> funcionarios = funcionarioService.getFuncionarios();
+       
+        funcionarios.forEach(System.out::println);
+        System.out.println("QUANTIDADE DE FUNCONARIOS: " + funcionarioService.getQuantidadeFuncionarios());
+        System.out.println("FUNCIONARIO PESQUISADO: " + funcionarioService.findFuncionarioById(1));
+        
+        // Teste Clientes*/
+        ClienteService clienteService = new ClienteService(getFileLines());
+        /*List<Cliente> clientes = clienteService.getClientes();
+        
+        clientes.forEach(System.out::println);
+        System.out.println("QUANTIDADE DE CLIENTES: " + clienteService.getQuantidadeFuncionarios());
+        System.out.println("CLIENTE PESQUISADO: " + clienteService.findClienteById(1));
+        */
+        
+        AtendimentoService atendimentoService = new AtendimentoService(getFileLines());
+        List<Atendimento> atendimentos = atendimentoService.getAtendimentos();
+        atendimentos.forEach(System.out::println);
+        System.out.println("TOTAL HORAS ATENDIMENTO: " + atendimentoService.getTotalHorasAtendimento() + " hrs");
+        
+        Cliente cliente = clienteService.findClienteById(1);
+        System.out.println("CLIENTE: " + cliente);
+        System.out.println("TOTAL DE SUAS HORAS: " + atendimentoService.getTotalHorasRealizadasByCliente(cliente));
     } 
     
     public static List<String> getFileLines(){
