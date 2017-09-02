@@ -5,8 +5,8 @@
  */
 package desafioinfisc.Service;
 
-import desafioinfisc.Cliente;
-import desafioinfisc.IdentificacaoDaLinha;
+import desafioinfisc.Entities.Cliente;
+import desafioinfisc.Enumerations.IdentificacaoDaLinha;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
