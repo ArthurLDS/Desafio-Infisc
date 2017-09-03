@@ -6,6 +6,7 @@
 package desafioinfisc.Entities;
 
 /**
+ * Classe para objetos do tipo Atendimento, onde serão contidos valores e métodos para o mesmo.
  *
  * @author Arthur
  */

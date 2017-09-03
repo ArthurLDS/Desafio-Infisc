@@ -6,7 +6,8 @@
 package desafioinfisc.Entities;
 
 /**
- *
+ * Classe para objetos do tipo Cliente, onde serão contidos valores e métodos para o mesmo.
+ * 
  * @author Arthur
  */
 public class Cliente {

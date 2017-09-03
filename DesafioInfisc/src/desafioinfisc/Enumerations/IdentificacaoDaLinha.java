@@ -6,7 +6,9 @@
 package desafioinfisc.Enumerations;
 
 /**
- *
+ * Enum usada para identificar o tipo de dado lido do arquivo.
+ * Ex: Se na linha constar : "0|1|Arthur" isso quer dizer que 0 identifica um Funcionario.
+ * 
  * @author Arthur
  */
 public enum IdentificacaoDaLinha {
