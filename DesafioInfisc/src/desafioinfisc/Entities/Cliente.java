@@ -45,6 +45,6 @@ public class Cliente {
     
     @Override
     public String toString(){
-        return "ID: " + this.id + " | Nome: " + this.nome;
+        return "ID: " + this.id + " | Nome: " + this.nome + " | Total horas de Atendimento: " + this.totalHorasAtendimento;
     }
 }
