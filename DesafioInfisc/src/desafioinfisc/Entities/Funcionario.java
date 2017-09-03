@@ -59,6 +59,6 @@ public class Funcionario {
     
     @Override
     public String toString(){
-        return "ID: " + this.id + " | Nome: " + this.nome + " | Numero Atendimentos: " + this.getNumeroAtendimentos();
+        return "ID: " + this.id + " | Nome: " + this.nome + " | Total horas de atendimento: " + this.getTotalHorasAtendimento() + " hrs | Numero Atendimentos: " + this.getNumeroAtendimentos();
     }
 }
