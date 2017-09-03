@@ -30,6 +30,8 @@ public class Funcionario {
     
     private int totalHorasAtendimento;
     
+    private int numeroAtendimentos;
+    
     public long getId() {
         return id;
     }
@@ -42,12 +44,20 @@ public class Funcionario {
         return totalHorasAtendimento;
     }
 
+    public int getNumeroAtendimentos() {
+        return numeroAtendimentos;
+    }
+
+    public void setNumeroAtendimentos(int numeroAtendimentos) {
+        this.numeroAtendimentos = numeroAtendimentos;
+    }
+    
     public void setTotalHorasAtendimento(int totalHorasAtendimento) {
         this.totalHorasAtendimento = totalHorasAtendimento;
     }
     
     @Override
     public String toString(){
-        return "ID: " + this.id + " | Nome: " + this.nome;
+        return "ID: " + this.id + " | Nome: " + this.nome + " | Numero Atendimentos: " + this.getNumeroAtendimentos();
     }
 }
