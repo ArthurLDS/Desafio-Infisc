@@ -11,6 +11,7 @@ import desafioinfisc.Entities.Funcionario;
 import desafioinfisc.Service.AtendimentoService;
 import desafioinfisc.Service.ClienteService;
 import desafioinfisc.Service.FuncionarioService;
+import static desafioinfisc.Utils.FileUtils.getFileLines;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -28,49 +29,40 @@ import java.util.stream.Stream;
 public class DesafioInfisc {
     
     public static void main(String[] args) {
-        // Teste Funcionarios
-        FuncionarioService funcionarioService = new FuncionarioService(getFileLines());
-        List<Funcionario> funcionarios = funcionarioService.getFuncionarios();
-       
-        funcionarios.forEach(System.out::println);
+        List<String> fileLines = getFileLines("C:/Users/Arthur/Downloads/dados.txt");
+        
+        FuncionarioService funcionarioService = new FuncionarioService(fileLines);
+        ClienteService clienteService = new ClienteService(fileLines);
+        AtendimentoService atendimentoService = new AtendimentoService(fileLines);
+        
+        // Exercício A
         System.out.println("QUANTIDADE DE FUNCONARIOS: " + funcionarioService.getQuantidadeFuncionarios());
-        System.out.println("FUNCIONARIO PESQUISADO: " + funcionarioService.findFuncionarioById(1));
         
-        // Teste Clientes
-        ClienteService clienteService = new ClienteService(getFileLines());
-        List<Cliente> clientes = clienteService.getClientes();
-        
-        clientes.forEach(System.out::println);
+        // Exercício B
         System.out.println("QUANTIDADE DE CLIENTES: " + clienteService.getQuantidadeFuncionarios());
-        System.out.println("CLIENTE PESQUISADO: " + clienteService.findClienteById(1));
         
+        // Exercício C
+        System.out.println("QUANTIDADE DE ATENDIMENTOS: " + atendimentoService.getQuantidadeAtendimentos());
         
-        AtendimentoService atendimentoService = new AtendimentoService(getFileLines());
-        List<Atendimento> atendimentos = atendimentoService.getAtendimentos();
-        atendimentos.forEach(System.out::println);
-        System.out.println("TOTAL HORAS ATENDIMENTO: " + atendimentoService.getTotalHorasAtendimento() + " hrs");
+        // Exercício D
+        System.out.println("TOTAL HORAS REALIZADAS DE ATENDIMENTO: " + atendimentoService.getTotalHorasAtendimento() + " hrs");
         
-        Cliente cliente = clienteService.findClienteById(1);
-        System.out.println("CLIENTE: " + cliente);
-        System.out.println("TOTAL DE SUAS HORAS: " + atendimentoService.getTotalHorasRealizadasByCliente(cliente));
+        // Exercicio E
+        System.out.println("LISTA DE CLIENTES COM TOTAL DE HORAS REALIZADAS EM ATENDIMENTO: ");
+        atendimentoService.getListaClientesComTotalHorasAtendimento().forEach(System.out::println);
         
-        System.out.println("NUMERO DE ATENDIMENTOS: " + atendimentoService.getQuantidadeAtendimentos());
+        // Exercício F
+        System.out.println("LISTA DE FUNCIONÁRIOS COM TOTAL DE HORAS REALIZADAS EM ATENDIMENTO: ");
+        atendimentoService.getListaFuncionariosComTotalHorasAtendimento().forEach(System.out::println);
         
-        System.out.println("FUNCIONARIO COM MAIS HORAS: " + atendimentoService.getFuncionarioComMaiorQntHorasAtendimento());
-        System.out.println("CLIENTE COM MAIS HORAS: " + atendimentoService.getClienteComMaiorQntHorasAtendimento());
-    } 
-    
-    public static List<String> getFileLines(){
-        List<String> lines = new ArrayList<>();    
-        try{
-            Stream<String> stream = Files.lines(Paths.get("C:/Users/Arthur/Downloads/dados.txt"));
-            stream.forEach(line -> lines.add(line));
-        } catch(IOException e){
-            e.printStackTrace();
-        }
-        return lines;
-    }
-    
-    
-    
+        // Exercício G
+        System.out.println("ID DO FUNCIONARIO COM MAIOR QUANTIDADE DE HORAS DE ATENDIMENTO: " + atendimentoService.getFuncionarioComMaiorQntHorasAtendimento().getId());
+        
+        // Exercício H
+        System.out.println("NOME DO CLIENTE COM MAIOR QUANTIDADE DE HORAS DE ATENDIMENTO: " + atendimentoService.getClienteComMaiorQntHorasAtendimento().getNome());
+        
+        // Exercício I
+        System.out.println("LISTA DE FORMA ORDENADA PELO NOME DOS FUNCIONÁRIOS QUE MAIS REALIZARAM ATENDIMENTOS: ");
+        atendimentoService.getFuncionariosOrdenadosPorMaisAtendimentos().forEach(System.out::println);  
+    }     
 }
