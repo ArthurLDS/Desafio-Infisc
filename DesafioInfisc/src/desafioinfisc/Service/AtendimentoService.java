@@ -31,6 +31,7 @@ public class AtendimentoService {
         this.atendimentos = getAllAtendimentos(fileLines);
         setAllTotalHorasAtendimentoFuncionarios();
         setAllTotalHorasAtendimentoClientes();
+        setAllNumeroAtendimentosFuncionarios();
     }
 
     public List<Atendimento> getAtendimentos() {
@@ -63,7 +64,19 @@ public class AtendimentoService {
                 .max((c1, c2) -> Integer.compare(c1.getTotalHorasAtendimento(), c2.getTotalHorasAtendimento())).get();
     }
     
+    public List<Funcionario> getFuncionariosOrdenadosPorMaisAtendimentos(){
+        return funcionarioService.getFuncionarios().stream()
+                .sorted((f1, f2) -> f1.getNome().compareTo(f2.getNome()))
+                .sorted((f1, f2) -> Integer.compare(f2.getNumeroAtendimentos(), f1.getNumeroAtendimentos()))
+                .collect(Collectors.toList());
+    } 
+    
     // ---- Private methods ----
+    private void setAllNumeroAtendimentosFuncionarios(){
+        funcionarioService.getFuncionarios().stream().forEach(f -> f.setNumeroAtendimentos(
+                (int) this.atendimentos.stream().filter(a -> a.getFuncionario().getId() == f.getId()).count()));
+    }
+    
     private void setAllTotalHorasAtendimentoFuncionarios(){
         funcionarioService.getFuncionarios().stream().forEach(f -> f.setTotalHorasAtendimento(
                 this.atendimentos.stream().filter(a -> a.getFuncionario().getId() == f.getId()).mapToInt(a -> a.getDuracaoHoras()).sum()));
