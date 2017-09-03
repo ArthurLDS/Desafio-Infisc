@@ -14,8 +14,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- *
+ * Esta classe é uma "Serviço" responsável por buscasr os dados referentes aos atendimentos a partir da leitura de um arquivo
+ * e então construir a representação destas informações em Classes Java. Também é responsável por manipular os dados
+ * referentes à Atendimento, com buscas apartir de filtragens específicas.
+ * 
  * @author Arthur
+ * 
+ * @see FuncionarioService
+ * @see ClienteService
  */
 public class AtendimentoService {
     
