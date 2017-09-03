@@ -71,6 +71,15 @@ public class AtendimentoService {
                 .collect(Collectors.toList());
     } 
     
+    public List<Cliente> getListaClientesComTotalHorasAtendimento(){
+        return clienteService.getClientes().stream()
+                .sorted((c1, c2) -> Long.compare(c1.getId(), c2.getId())).collect(Collectors.toList());
+    }
+    
+    public List<Funcionario> getListaFuncionariosComTotalHorasAtendimento(){
+        return funcionarioService.getFuncionarios();
+    }
+    
     // ---- Private methods ----
     private void setAllNumeroAtendimentosFuncionarios(){
         funcionarioService.getFuncionarios().stream().forEach(f -> f.setNumeroAtendimentos(
