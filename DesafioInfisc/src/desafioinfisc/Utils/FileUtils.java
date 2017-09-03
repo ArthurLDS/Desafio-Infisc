@@ -7,6 +7,7 @@ package desafioinfisc.Utils;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +34,10 @@ public class FileUtils {
             Stream<String> stream = Files.lines(Paths.get(path));
             stream.forEach(line -> lines.add(line));
         } catch(IOException e){
+            System.out.println("Algo Está errado com seu arquivo ou caminho!");
             e.printStackTrace();
         }
+        
         return lines;
     }
 }
