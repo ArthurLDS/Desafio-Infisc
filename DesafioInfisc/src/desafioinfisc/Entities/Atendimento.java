@@ -30,7 +30,7 @@ public class Atendimento {
     public long getId() {
         return id;
     }
-
+    
     public Funcionario getFuncionario() {
         return funcionario;
     }

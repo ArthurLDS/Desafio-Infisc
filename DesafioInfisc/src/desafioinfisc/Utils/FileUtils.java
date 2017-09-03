@@ -24,7 +24,7 @@ public class FileUtils {
      * caminho específico recebido.
      * 
      * @param path - Caminho do arquivo
-     * @return List<String> - Linhas do Arquivo
+     * @return List - Linhas do Arquivo
      */
     
     public static List<String> getFileLines(String path){

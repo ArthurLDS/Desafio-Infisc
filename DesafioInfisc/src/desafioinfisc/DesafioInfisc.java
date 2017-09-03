@@ -19,17 +19,22 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- *
+ * 
  * @author Arthur
  */
 public class DesafioInfisc {
     
     public static void main(String[] args) {
-        List<String> fileLines = getFileLines("C:/Users/Arthur/Downloads/dados.txt");
+        Scanner ler = new Scanner(System.in);
+        
+        System.out.println("Digite o caminho de seu arquivo: (Ex: 'C:/Users/Arthur/Downloads/dados.txt')");
+        String caminho = ler.nextLine();
+        List<String> fileLines = getFileLines(caminho);
         
         FuncionarioService funcionarioService = new FuncionarioService(fileLines);
         ClienteService clienteService = new ClienteService(fileLines);
@@ -39,7 +44,7 @@ public class DesafioInfisc {
         System.out.println("QUANTIDADE DE FUNCONARIOS: " + funcionarioService.getQuantidadeFuncionarios());
         
         // Exercício B
-        System.out.println("QUANTIDADE DE CLIENTES: " + clienteService.getQuantidadeFuncionarios());
+        System.out.println("QUANTIDADE DE CLIENTES: " + clienteService.getQuantidadeClientes());
         
         // Exercício C
         System.out.println("QUANTIDADE DE ATENDIMENTOS: " + atendimentoService.getQuantidadeAtendimentos());
