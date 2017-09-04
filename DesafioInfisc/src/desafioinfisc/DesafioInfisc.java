@@ -26,11 +26,18 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
+ * Classe principal da aplicação.
  *
  * @author Arthur
  */
 public class DesafioInfisc {
 
+    /**
+     * Método principal da aplicação, responsável por executar e exibir a
+     * solução de todos os exercícios propostos.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         String caminho = lerCaminhoArquivo();
@@ -41,33 +48,33 @@ public class DesafioInfisc {
         AtendimentoService atendimentoService = new AtendimentoService(fileLines);
 
         // Exercício a) - Quantidade de funcionários
-        System.out.println("QUANTIDADE DE FUNCONARIOS: " + funcionarioService.getQuantidadeFuncionarios());
+        System.out.println("- QUANTIDADE DE FUNCONARIOS: " + funcionarioService.getQuantidadeFuncionarios());
 
         // Exercício b) - Quantidade de clientes
-        System.out.println("QUANTIDADE DE CLIENTES: " + clienteService.getQuantidadeClientes());
+        System.out.println("- QUANTIDADE DE CLIENTES: " + clienteService.getQuantidadeClientes());
 
         // Exercício c) - Quantidade de atendimentos
-        System.out.println("QUANTIDADE DE ATENDIMENTOS: " + atendimentoService.getQuantidadeAtendimentos());
+        System.out.println("- QUANTIDADE DE ATENDIMENTOS: " + atendimentoService.getQuantidadeAtendimentos());
 
         // Exercício d) - Total de horas realizadas de atendimento
-        System.out.println("TOTAL HORAS REALIZADAS DE ATENDIMENTO: " + atendimentoService.getTotalHorasAtendimento() + " hrs");
+        System.out.println("- TOTAL HORAS REALIZADAS DE ATENDIMENTO: " + atendimentoService.getTotalHorasAtendimento() + " hrs");
 
         // Exercicio e) - Total de horas realizadas de atendimento por cliente (listar cada cliente e a quantidade de horas que ele se ocupou em atendimento)
-        System.out.println("LISTA DE CLIENTES COM TOTAL DE HORAS REALIZADAS EM ATENDIMENTO: ");
+        System.out.println("- LISTA DE CLIENTES COM TOTAL DE HORAS REALIZADAS EM ATENDIMENTO: ");
         atendimentoService.getListaClientesComTotalHorasAtendimento().forEach(System.out::println);
 
         // Exercício f) - Total de horas realizadas de atendimento por funcionário (listar cada funcionário e a quantidade de horas que ele se ocupou em atendimento);
-        System.out.println("LISTA DE FUNCIONÁRIOS COM TOTAL DE HORAS REALIZADAS EM ATENDIMENTO: ");
+        System.out.println("- LISTA DE FUNCIONÁRIOS COM TOTAL DE HORAS REALIZADAS EM ATENDIMENTO: ");
         atendimentoService.getListaFuncionariosComTotalHorasAtendimento().forEach(System.out::println);
 
         // Exercício g) - Qual o ID do funcionário que realizou a maior quantidade de horas em atendimento
-        System.out.println("ID DO FUNCIONARIO COM MAIOR QUANTIDADE DE HORAS DE ATENDIMENTO: " + atendimentoService.getFuncionarioComMaiorQntHorasAtendimento().getId());
+        System.out.println("- ID DO FUNCIONARIO COM MAIOR QUANTIDADE DE HORAS DE ATENDIMENTO: " + atendimentoService.getFuncionarioComMaiorQntHorasAtendimento().getId());
 
         // Exercício h) - Qual o NOME do cliente que consumiu a maior a quantidade de horas em atendimento
-        System.out.println("NOME DO CLIENTE COM MAIOR QUANTIDADE DE HORAS DE ATENDIMENTO: " + atendimentoService.getClienteComMaiorQntHorasAtendimento().getNome());
+        System.out.println("- NOME DO CLIENTE COM MAIOR QUANTIDADE DE HORAS DE ATENDIMENTO: " + atendimentoService.getClienteComMaiorQntHorasAtendimento().getNome());
 
         // Exercício i) - Liste de forma ordenada o nome dos funcionários que mais realizaram atendimentos.
-        System.out.println("LISTA DE FORMA ORDENADA PELO NOME DOS FUNCIONÁRIOS QUE MAIS REALIZARAM ATENDIMENTOS: ");
+        System.out.println("- LISTA DE FORMA ORDENADA PELO NOME DOS FUNCIONÁRIOS QUE MAIS REALIZARAM ATENDIMENTOS (NUMERO ATENDIMENTOS): ");
         atendimentoService.getFuncionariosOrdenadosPorMaisAtendimentos().forEach(System.out::println);
     }
 
@@ -77,7 +84,7 @@ public class DesafioInfisc {
         String caminho = "";
 
         do {
-            System.out.println("Digite o caminho de seu arquivo (Exemplo: 'C:/Users/Arthur/Downloads/dados.txt'): ");
+            System.out.println("Digite o caminho de seu arquivo (Exemplo: 'C:/AlgumaPasta/AlgumaPasta/dados.txt'): ");
             caminho = ler.nextLine();
             file = new File(caminho);
             if (!file.exists()) {

@@ -7,7 +7,6 @@ package desafioinfisc.Utils;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,29 +14,28 @@ import java.util.stream.Stream;
 
 /**
  * Classe usada para leitura de arquivo.
- * 
+ *
  * @author Arthur
  */
 public class FileUtils {
-    
+
     /**
-     * Método usado para leitura de arquivo a partir de um 
-     * caminho específico recebido.
-     * 
+     * Método usado para leitura de arquivo a partir de um caminho específico
+     * recebido.
+     *
      * @param path - Caminho do arquivo
      * @return List - Linhas do Arquivo
      */
-    
-    public static List<String> getFileLines(String path){
-        List<String> lines = new ArrayList<>();    
-        try{
+    public static List<String> getFileLines(String path) {
+        List<String> lines = new ArrayList<>();
+        try {
             Stream<String> stream = Files.lines(Paths.get(path));
             stream.forEach(line -> lines.add(line));
-        } catch(IOException e){
-            System.out.println("Algo Está errado com seu arquivo ou caminho!");
+        } catch (IOException e) {
+            System.out.println("Algo Está errado com seu arquivo ou  seu caminho! Tende novamente.");
             e.printStackTrace();
         }
-        
+
         return lines;
     }
 }
