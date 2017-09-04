@@ -75,8 +75,8 @@ public class ClienteService {
      * @return List
      */
     private List<String> getClientesString(List<String> fileLines){
-        List<String> clientesString = fileLines.stream().filter(line -> Character.getNumericValue(line.charAt(0)) == IdentificacaoDaLinha.CLIENTE.getValor())
+        return fileLines.stream().filter(line -> Character.getNumericValue(line.charAt(0)) == IdentificacaoDaLinha.CLIENTE.getValor())
                 .collect(Collectors.toList());
-        return clientesString;
+        
     }
 }
