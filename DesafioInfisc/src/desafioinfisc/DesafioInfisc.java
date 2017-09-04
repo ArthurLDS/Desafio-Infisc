@@ -46,7 +46,9 @@ public class DesafioInfisc {
         FuncionarioService funcionarioService = new FuncionarioService(fileLines);
         ClienteService clienteService = new ClienteService(fileLines);
         AtendimentoService atendimentoService = new AtendimentoService(fileLines);
-
+        
+        System.out.println("------- RELATÓRIO COMPLETO -------");
+        
         // Exercício a) - Quantidade de funcionários
         System.out.println("- QUANTIDADE DE FUNCONARIOS: " + funcionarioService.getQuantidadeFuncionarios());
 
